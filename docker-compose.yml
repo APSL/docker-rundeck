@@ -1,0 +1,8 @@
+rundeck:
+  build: .
+  #environment:
+  volumes:
+    - ./volumes/data:/var/lib/rundeck/data
+    - ./volumes/logs:/var/logs/rundeck
+  ports:
+    - "127.0.0.1:8001:4440" # thumbor port
