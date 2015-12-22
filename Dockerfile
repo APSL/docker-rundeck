@@ -2,9 +2,6 @@ FROM java:openjdk-7-jdk
 
 MAINTAINER Edu Herraiz <ghark@gmail.com>
 
-VOLUME /var/logs/rundeck
-VOLUME /var/lib/rundeck/data
-
 RUN  \
     echo "deb http://dl.bintray.com/rundeck/rundeck-deb /" | tee -a /etc/apt/sources.list.d/rundeck.list && \
     wget -qO- https://bintray.com/user/downloadSubjectPublicKey?username=bintray | apt-key add -
@@ -23,6 +20,9 @@ ENV HOME /var/lib/rundeck
 ENV SHELL bash
 ENV WORKON_HOME /var/lib/rundeck
 WORKDIR /var/lib/rundeck
+
+VOLUME /var/logs/rundeck
+VOLUME /data
 
 COPY conf /root/rundeck-config
 

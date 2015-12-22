@@ -4,7 +4,7 @@ rundeck:
      ADMIN_PASSWORD: holaquetal
      SERVER_URL: http://localhost:8001
   volumes:
-    - ./volumes/data:/var/lib/rundeck/data
+    - ./volumes/data:/data
     - ./volumes/logs:/var/logs/rundeck
   ports:
     - "127.0.0.1:8001:4440" # thumbor port
