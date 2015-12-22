@@ -21,8 +21,9 @@ ENV SHELL bash
 ENV WORKON_HOME /var/lib/rundeck
 WORKDIR /var/lib/rundeck
 
-VOLUME /var/logs/rundeck
-VOLUME /data
+VOLUME /var/log/rundeck
+VOLUME /var/rundeck/projects
+VOLUME /var/lib/rundeck/data
 
 COPY conf /root/rundeck-config
 
