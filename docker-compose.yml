@@ -1,6 +1,8 @@
 rundeck:
   build: .
-  #environment:
+  environment:
+     ADMIN_PASSWORD: holaquetal
+     SERVER_URL: http://localhost:8001
   volumes:
     - ./volumes/data:/var/lib/rundeck/data
     - ./volumes/logs:/var/logs/rundeck

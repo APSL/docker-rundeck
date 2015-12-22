@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Rundeck configuration
-for FILE in `ls /root/rundeck-config`
-do
-    envtpl -o /etc/rundeck/$FILE --allow-missing --keep-template /root/rundeck-config/$FILE
-done
-
 if [ "$1" = 'rundeck' ]
 then
     
@@ -14,6 +8,11 @@ then
 
     touch /var/log/rundeck/rundeck.log
     chown rundeck:adm /var/log/rundeck/rundeck.log
+    # Rundeck configuration
+    for FILE in `ls /root/rundeck-config`
+    do
+        envtpl -o /etc/rundeck/$FILE --allow-missing --keep-template /root/rundeck-config/$FILE
+    done
     tail -f /var/log/rundeck/rundeck.log
 
     # stop service and clean up here
