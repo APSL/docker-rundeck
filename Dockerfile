@@ -21,11 +21,10 @@ ENV SHELL bash
 ENV WORKON_HOME /var/lib/rundeck
 WORKDIR /var/lib/rundeck
 
-VOLUME /var/log/rundeck
-VOLUME /var/rundeck/projects
-VOLUME /var/lib/rundeck/data
+VOLUME /data
 
 COPY conf /root/rundeck-config
+COPY conf-templates /root/rundeck-config-templates
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]

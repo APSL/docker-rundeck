@@ -1,11 +1,22 @@
-rundeck:
+web:
   build: .
   environment:
-     ADMIN_PASSWORD: holaquetal
-     SERVER_URL: http://localhost:8001
+    ADMIN_PASSWORD: holaquetal
+    SERVER_URL: http://kiwi9.apsl.net:8011
+    MYSQL_HOST: mysql
+    MYSQL_DATABASE: rundeckdb
+    MYSQL_USER: urundeck
+    MYSQL_PASSWORD: rundeckpass    
   volumes:
-    - ./volumes/data:/var/lib/rundeck/data
-    - ./volumes/logs:/var/log/rundeck
-    - ./volumes/projects:/var/rundeck/projects
+    - ./volumes/data:/data
+  links:
+    - "mysql:mysql"
   ports:
-    - "127.0.0.1:8001:4440" # thumbor port
+    - "0.0.0.0:8011:4440"
+mysql:
+  image: mysql:5.7.11
+  environment:
+    MYSQL_DATABASE: rundeckdb
+    MYSQL_USER: urundeck
+    MYSQL_PASSWORD: rundeckpass
+    MYSQL_ROOT_PASSWORD: ashoNg0aloqu2oh
