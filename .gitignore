@@ -1,4 +1,5 @@
 .directory
 volumes*
 old_data*
+docker-compose-test.yml
 
