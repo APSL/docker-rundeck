@@ -19,4 +19,4 @@ after_success:
 - export TAG=$RUNDECK_VERSION
 - docker tag apsl/rundeck apsl/rundeck:$TAG
 - docker push apsl/rundeck:$TAG 
-- if [ "$TRAVIS_BRANCH" == "master" ]; docker tag apsl/rundeck apsl/rundeck:latest; docker push apsl/rundeck:latest; fi
+- if [ "$TRAVIS_BRANCH" == "master" ]; then docker tag apsl/rundeck apsl/rundeck:latest; docker push apsl/rundeck:latest; fi
