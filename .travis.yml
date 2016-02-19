@@ -18,5 +18,5 @@ after_success:
 - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 - export TAG=$RUNDECK_VERSION
 - docker tag apsl/rundeck apsl/rundeck:$TAG
-- docker push apsl/rundeck:$TAG 
-- if [ "$TRAVIS_BRANCH" == "master" ]; then docker tag apsl/rundeck apsl/rundeck:latest; docker push apsl/rundeck:latest; fi
+- docker push -f apsl/rundeck:$TAG 
+- if [ "$TRAVIS_BRANCH" == "master" ]; then docker tag apsl/rundeck apsl/rundeck:latest; docker push -f apsl/rundeck:latest; fi
