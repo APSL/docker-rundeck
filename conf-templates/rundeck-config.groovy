@@ -9,12 +9,24 @@ rss.enabled="false"
 
 grails.serverURL="{{ RUNDECK_SERVER_URL | default('http://localhost:4440') }}"
 
+{% if RUNDECK_DATABASE_ENGINE == 'postgresql' %}
+dataSource {
+  dbCreate="update"
+  driverClassName="org.postgresql.Driver"
+  url="jdbc:postgresql://{{ RUNDECK_POSTGRES_HOST | default('postgres') }}/{{ RUNDECK_POSTGRES_DATABASE | default('rundeckdb') }}?autoReconnect=true"
+  username="{{ RUNDECK_POSTGRES_USER | default('urundeck') }}"
+  password="{{ RUNDECK_POSTGRES_PASSWORD | default('rundeckpass') }}"
+}
+{% endif %}
+
+{% if RUNDECK_DATABASE_ENGINE == 'mysql' %}
 dataSource {
   dbCreate="update"
   url="jdbc:mysql://{{ RUNDECK_MYSQL_HOST | default('mysql') }}/{{ RUNDECK_MYSQL_DATABASE | default('rundeckdb') }}?autoReconnect=true"
   username="{{ RUNDECK_MYSQL_USER | default('urundeck') }}"
   password="{{ RUNDECK_MYSQL_PASSWORD | default('rundeckpass') }}"
 }
+{% endif %}
 
 grails {
   mail {

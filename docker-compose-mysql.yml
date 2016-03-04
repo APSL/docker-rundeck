@@ -1,26 +1,26 @@
 web:
-  image: apsl/rundeck
+  build: .
   environment:
     RUNDECK_DATABASE_ENGINE: mysql
-    RUNDECK_INITIAL_ADMIN_PASSWORD: apslrocks
-    RUNDECK_SERVER_URL: http://rundeck.yourdomain.com
+    RUNDECK_INITIAL_ADMIN_PASSWORD: holaquetal
+    RUNDECK_SERVER_URL: http://kiwi9.apsl.net:8012
     RUNDECK_MYSQL_HOST: mysql
     RUNDECK_MYSQL_DATABASE: rundeckdb
     RUNDECK_MYSQL_USER: urundeck
     RUNDECK_MYSQL_PASSWORD: rundeckpass
-    RUNDECK_MAIL_HOST: smtp.yourmailserver.net
-    RUNDECK_MAIL_USERNAME: username
+    RUNDECK_MAIL_HOST: smtp.mandrillapp.com
+    RUNDECK_MAIL_USERNAME: hostmaster@apsl.net
     RUNDECK_MAIL_PORT: 587
-    RUNDECK_MAIL_PASSWORD: password
+    RUNDECK_MAIL_PASSWORD: UzHgnOcnVCZbBC13SPp23g
     RUNDECK_MAIL_STARTTLS: true
     RUNDECK_MAIL_SMTP_AUTH: true
-    RUNDECK_MAIL_DEFAULT_FROM: noreply@yourdomain.com
+    RUNDECK_MAIL_DEFAULT_FROM: noreply@apsl.net
   volumes:
     - ./volumes/data:/data
   links:
     - "mysql:mysql"
   ports:
-    - "0.0.0.0:80:4440"
+    - "0.0.0.0:8012:4440"
 mysql:
   image: mysql:5.7.11
   environment:
