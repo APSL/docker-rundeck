@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 // loglevel.default is the default log level for jobs: ERROR,WARN,INFO,VERBOSE,DEBUG
-loglevel.default="INFO"
+loglevel.default="{{ RUNDECK_LOG_LEVEL | default('INFO') }}"
 rdeck.base="/var/lib/rundeck"
 
 // rss.enabled if set to true enables RSS feeds that are public (non-authenticated)
